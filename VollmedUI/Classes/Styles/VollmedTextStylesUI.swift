@@ -8,58 +8,156 @@
 import SwiftUI
 
 struct VollmedTextStylesUI: View {
-    let boldColor = Color(red: 0.0/255.0,
-                          green: 33.0/255.0,
-                          blue: 61.0/255.0,
-                          opacity: 1.0)
     
     var body: some View {
         VStack {
             Text("Title L Regular")
-                .font(.system(size: 22))
-                .foregroundStyle(.gray)
-                .fontWeight(.regular)
+                .titleLRegularStyle()
             
             Text("Title L Bold")
-                .font(.system(size: 22))
-                .foregroundStyle(boldColor)
-                .fontWeight(.bold)
+                .titleLBoldStyle()
             
             Text("Title Md Regular")
-                .font(.system(size: 20))
-                .foregroundStyle(.gray)
-                .fontWeight(.regular)
+                .titleMdRegularStyle()
             
             Text("Title Md Bold")
-                .font(.system(size: 20))
-                .foregroundStyle(boldColor)
-                .fontWeight(.bold)
+                .titleMdBoldStyle()
             
             Text("Title S Regular")
-                .font(.system(size: 18))
-                .foregroundStyle(.gray)
-                .fontWeight(.regular)
+                .titleSRegularStyle()
             
             Text("Title S Bold")
-                .font(.system(size: 18))
-                .foregroundStyle(boldColor)
-                .fontWeight(.bold)
+                .titleSBoldStyle()
             
             Text("Body Regular")
-                .font(.system(size: 17))
-                .foregroundStyle(.gray)
-                .fontWeight(.regular)
+                .bodyRegularStyle()
             
             Text("Body Bold")
-                .font(.system(size: 17))
-                .foregroundStyle(boldColor)
-                .fontWeight(.bold)
+                .bodyBoldStyle()
             
             Text("Caption")
-                .font(.system(size: 14))
-                .foregroundStyle(.gray)
-                .fontWeight(.regular)
+                .captionStyle()
         }
+    }
+}
+
+struct TitleStyleLRegular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 22))
+            .foregroundStyle(.gray)
+            .fontWeight(.regular)
+    }
+}
+
+struct TitleStyleLBold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 22))
+            .foregroundStyle(Color(red: 0.0/255.0,
+                                   green: 33.0/255.0,
+                                   blue: 61.0/255.0,
+                                   opacity: 1.0))
+            .fontWeight(.bold)
+    }
+}
+
+struct TitleStyleMdRegular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 20))
+            .foregroundStyle(.gray)
+            .fontWeight(.regular)
+    }
+}
+
+struct TitleStyleMdBold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 20))
+            .foregroundStyle(Color(red: 0.0/255.0,
+                                   green: 33.0/255.0,
+                                   blue: 61.0/255.0,
+                                   opacity: 1.0))
+            .fontWeight(.bold)
+    }
+}
+
+struct TitleStyleSRegular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 18))
+            .foregroundStyle(.gray)
+            .fontWeight(.regular)
+    }
+}
+
+struct TitleStyleSBold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 18))
+            .foregroundStyle(Color(red: 0.0/255.0,
+                                   green: 33.0/255.0,
+                                   blue: 61.0/255.0,
+                                   opacity: 1.0))
+            .fontWeight(.bold)
+    }
+}
+
+struct BodyRegular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17))
+            .foregroundStyle(.gray)
+            .fontWeight(.regular)
+    }
+}
+
+struct BodyBold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 17))
+            .foregroundStyle(.gray)
+            .fontWeight(.bold)
+    }
+}
+
+struct Caption: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 14))
+            .foregroundStyle(.gray)
+            .fontWeight(.regular)
+    }
+}
+
+extension View {
+    public func titleLRegularStyle() -> some View {
+        modifier(TitleStyleLRegular())
+    }
+    public func titleLBoldStyle() -> some View {
+        modifier(TitleStyleLBold())
+    }
+    public func titleMdRegularStyle() -> some View {
+        modifier(TitleStyleMdRegular())
+    }
+    public func titleMdBoldStyle() -> some View {
+        modifier(TitleStyleMdBold())
+    }
+    public func titleSRegularStyle() -> some View {
+        modifier(TitleStyleSRegular())
+    }
+    public func titleSBoldStyle() -> some View {
+        modifier(TitleStyleSBold())
+    }
+    public func bodyRegularStyle() -> some View {
+        modifier(BodyRegular())
+    }
+    public func bodyBoldStyle() -> some View {
+        modifier(BodyBold())
+    }
+    public func captionStyle() -> some View {
+        modifier(Caption())
     }
 }
 
